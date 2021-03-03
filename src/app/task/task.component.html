@@ -1,2 +1,78 @@
-<p>task works!</p>
-<button class="btn btn-success"> boutton </button>
+<div id="btnfermer"> 
+    <button class="btn-dialog-close"  mat-stroked-button (click)="onClick()" ><mat-icon>clear</mat-icon></button>
+</div>
+
+  <form class="normal-form">
+
+   <mat-grid-list cols="2" >
+    
+    
+    <mat-grid-tile>
+
+          <div class="controles-container"> 
+    
+    
+                  <mat-form-field>
+                   <input matInput placeholder="Titre "  >
+                   </mat-form-field>
+    
+                    <mat-form-field>
+                    <mat-select placeholder="Statut" >
+                    
+                    <ng-container >
+                    <mat-option value="NPEC">NPEC</mat-option>
+                    <mat-option value="Encours">Encours</mat-option>
+                    <mat-option value="Terminé">Terminé</mat-option>
+                    <mat-option value="Retard">Retard</mat-option>
+                    </ng-container>
+                    </mat-select>
+                    </mat-form-field>
+    
+    
+                   
+                    <mat-form-field appearance="fill">
+                        <mat-label>Date début</mat-label>
+                        <input matInput [matDatepicker]="picker">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                     </mat-form-field>
+
+    
+                      <mat-form-field appearance="fill">
+                        <mat-label>Date de Fin</mat-label>
+                        <input matInput [matDatepicker]="picker2">
+                        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                        <mat-datepicker #picker2></mat-datepicker>
+                      </mat-form-field>
+                    
+
+                     <mat-form-field>
+                        <textarea matInput placeholder="Ecrivez une description*... "  formControlName="descriptionDet" cdkTextareaAutosize
+                          cdkAutosizeMinRows="5"></textarea>
+                      </mat-form-field>
+                    
+          </div>
+
+          
+    
+            </mat-grid-tile>
+
+    
+              <mat-grid-tile>
+                            
+                          <img src="../../assets/images/todo.JPG" height="75%" width="90%">   
+    
+              </mat-grid-tile>
+
+            
+</mat-grid-list>
+
+
+
+<button type="submit" class="btn btn-sm btn-success" id="validation">Enregistrer </button>
+ 
+<button type="reset" class="btn btn-sm btn-secondary" id="rest">Reset </button>    
+
+  
+    
+</form>
