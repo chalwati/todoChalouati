@@ -2,7 +2,7 @@
     <button class="btn-dialog-close"  mat-stroked-button (click)="onClick()" ><mat-icon>clear</mat-icon></button>
 </div>
 
-  <form class="normal-form">
+  <form [formGroup]="formTemplate"  class="normal-form">
 
    <mat-grid-list cols="2" >
     
@@ -13,14 +13,14 @@
     
     
                   <mat-form-field>
-                   <input matInput placeholder="Titre "  >
+                   <input matInput placeholder="Titre "  formControlName="titre">
                    </mat-form-field>
     
                     <mat-form-field>
-                    <mat-select placeholder="Statut" >
+                    <mat-select placeholder="Statut"  value="{{data.statut}}" formControlName="statut" >
                     
                     <ng-container >
-                    <mat-option value="NPEC">NPEC</mat-option>
+                    <mat-option value="NPEC">NPEC</mat-option> <!-- la valeur par defaut qui va apporter par le nouveau objet lors de la création-->
                     <mat-option value="Encours">Encours</mat-option>
                     <mat-option value="Terminé">Terminé</mat-option>
                     <mat-option value="Retard">Retard</mat-option>
@@ -32,7 +32,7 @@
                    
                     <mat-form-field appearance="fill">
                         <mat-label>Date début</mat-label>
-                        <input matInput [matDatepicker]="picker">
+                        <input matInput [matDatepicker]="picker" value="{{data.debut}}" formControlName="datedebut">
                         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                         <mat-datepicker #picker></mat-datepicker>
                      </mat-form-field>
@@ -40,15 +40,15 @@
     
                       <mat-form-field appearance="fill">
                         <mat-label>Date de Fin</mat-label>
-                        <input matInput [matDatepicker]="picker2">
+                        <input matInput [matDatepicker]="picker2" value="{{data.fin}}" formControlName="dateecheance">
                         <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
                         <mat-datepicker #picker2></mat-datepicker>
                       </mat-form-field>
                     
 
                      <mat-form-field>
-                        <textarea matInput placeholder="Ecrivez une description*... "  formControlName="descriptionDet" cdkTextareaAutosize
-                          cdkAutosizeMinRows="5"></textarea>
+                        <textarea matInput placeholder="Ecrivez une description*... "  formControlName="description" cdkTextareaAutosize
+                          cdkAutosizeMinRows="5"  value="{{data.description}}"></textarea>
                       </mat-form-field>
                     
           </div>
@@ -69,7 +69,7 @@
 
 
 
-<button type="submit" class="btn btn-sm btn-success" id="validation">Enregistrer </button>
+<button type="submit" class="btn btn-sm btn-success" id="validation" (click)="save(formTemplate.value)">Enregistrer </button>
  
 <button type="reset" class="btn btn-sm btn-secondary" id="rest">Reset </button>    
 

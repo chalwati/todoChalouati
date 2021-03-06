@@ -10,6 +10,10 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import { ConsultTaskComponent } from './task/consult-task/consult-task.component';
 import {Observable, Subscription, from}  from 'rxjs';
 import {HttpClientModule, HttpClient} from '@angular/common/http';
+import {ReactiveFormsModule } from '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,6 +23,7 @@ import {HttpClientModule, HttpClient} from '@angular/common/http';
   imports: [
     HttpClientModule,
     BrowserModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     MaterialModule, 
     BrowserAnimationsModule,

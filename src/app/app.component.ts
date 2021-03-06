@@ -19,7 +19,7 @@ export class AppComponent implements  OnInit  {
   newTask = new Task();
   displayedColumns: string[] = ['titre',  'datedebut', 'dateecheance','description','statut','Action'];
   dataSource ?: any;
-
+ 
 
 
   constructor(public dialog: MatDialog, private servTask: ManagementTasksService) {
@@ -46,22 +46,27 @@ getAllTask(){
  
 
 
-  open(): void {
+  open(row:Task): void {
 
 
 
-   if(true)
+   if(row)
          {
 
               let dialogRef =this.dialog.open(TaskComponent, {
                 height: '85%',
-                 width: '70%',
+                width: '70%',
+
+                data: { titre : row.titre,
+                debut : row.datedebut,
+                fin : row.dateecheance,
+                description : row.description,
+                statut : row.statut,
+                statmodf : row.statutModif
+                }
+
               });
 
-
-              dialogRef.afterClosed().subscribe(result => {
-                console.log(`Dialog result`); 
-              });
 
           }
 
@@ -71,25 +76,28 @@ getAllTask(){
     let dialogRef =this.dialog.open(TaskComponent, {
          height: '50%',
           width: '50%',
-          /*data:{'id:, titre:,description:,comentaire:'}*/
+          data: {}
 
           });
-
-
-        dialogRef.afterClosed().subscribe(result => {
-          console.log(`Dialog result`); 
-          });
-
 
       }
 
   }
 
-  Consulter():void{
+
+
+
+  Consulter(row:Task):void{
 
     let dialogRef =this.dialog.open(ConsultTaskComponent, {
       height: '50%',
-       width: '40%',
+      width: '40%',
+      data: { titre : row.titre,
+              debut : row.datedebut,
+              fin : row.dateecheance,
+              description : row.description,
+              statut : row.statut
+            }
     });
 
 
