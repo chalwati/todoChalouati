@@ -1,5 +1,5 @@
 
-span{
+p{
 
     margin: auto;
     font-size: large;
@@ -11,3 +11,24 @@ span{
     }
 
   }
+
+
+  table {
+    width: 100%;
+  }
+  .mat-elevation-z8{width: 90%; margin-left:5%;margin-top: 4%;}
+  
+  .mat-form-field {
+    font-size: 14px;
+    width: 80%;
+  }
+  
+  td, th {
+    width: 15%;
+  }
+  
+.btn{margin-right: 3px;}
+
+  .controle{ margin-left:5%;margin-top:5%;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif}
+
+
