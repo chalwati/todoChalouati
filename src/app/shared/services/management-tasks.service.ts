@@ -3,13 +3,13 @@ import { from } from 'rxjs';
 import{HttpClient} from '@angular/common/http';
 import{Observable} from 'rxjs';
 import{Task} from '../models/task'
-
+import{environment} from "../../../environments/environment";
 @Injectable({
   providedIn: 'root'
 })
 export class ManagementTasksService {
 
-  private backUrl= 'http://localhost:8080';
+  private backUrl= environment.backendUrl;
 
   constructor(private http: HttpClient) { }
 
