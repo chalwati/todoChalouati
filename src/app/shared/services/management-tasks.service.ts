@@ -22,13 +22,13 @@ export class ManagementTasksService {
  }
 
 
-  addTask(task:Task):Observable<any>{
+  addTask(task:Object ):Observable<Object>{
     debugger;
     return this.http.post(`${this.backUrl}/add-task`,task);
   }
 
 
-  updateTask(task:Task):Observable<any> {
+  updateTask(task:Object):Observable<Object> {
        return this.http.put(`${this.backUrl}/update-task`,task);
   }
 

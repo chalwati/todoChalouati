@@ -57,7 +57,10 @@ getAllTask(){
                 height: '85%',
                 width: '70%',
 
-                data: { titre : row.titre,
+                data: {
+                operation:'update',
+                id:row.id,
+                titre : row.titre,
                 debut : row.datedebut,
                 fin : row.dateecheance,
                 description : row.description,
@@ -76,7 +79,7 @@ getAllTask(){
     let dialogRef =this.dialog.open(TaskComponent, {
          height: '50%',
           width: '50%',
-          data: {}
+          data: {operation:'add'}
 
           });
 

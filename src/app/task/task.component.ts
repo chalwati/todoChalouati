@@ -11,6 +11,7 @@ import { Task } from '../shared/models/task';
 export class TaskComponent implements OnInit {
 
   formTemplate = new FormGroup({
+    id: new FormControl(''),
     titre: new FormControl(''),
     description: new FormControl(''),
     datedebut: new FormControl(''),
@@ -27,6 +28,7 @@ export class TaskComponent implements OnInit {
   ngOnInit(): void {
 
     this.formTemplate = this._formBuilder.group({
+      id:[this.data.id],
       titre: [this.data.titre, Validators.required],
       description: [this.data.description],
       datedebut: [this.data.debut],
@@ -39,16 +41,43 @@ export class TaskComponent implements OnInit {
  
 
 
-  save(formValue:any){ debugger;
-                    this.servTask.addTask(formValue);
-                    this.onClick();
-  }
+  save(){
 
+                  if(this.data.operation == "update") {
+
+                    this.servTask.addTask(this.formTemplate.value).subscribe(data => {
+                      console.log(data)
+                      this.formTemplate.reset();  
+                    }, 
+                    error => console.log(error));
+                    this.onClick();
+                  }
+
+
+                  else {
+                         this.servTask.updateTask(this.formTemplate.value).subscribe(data => {
+                          console.log(data)
+                          this.formTemplate.reset();  
+                        }, 
+                        error => console.log(error));
+                        this.onClick();
+
+                       }
+
+            
+
+                   
+  }
 
 
   onClick(): void {
     this.dialogRef.close();
   }
+
+
+
+
+
 
 
 
