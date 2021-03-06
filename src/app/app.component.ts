@@ -1,6 +1,4 @@
 import { Component,ViewChild,AfterViewInit, Inject, OnInit} from '@angular/core';
-import {MatSort} from '@angular/material/sort';
-import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import {TaskComponent}  from './task/task.component';
 import {MatDialogModule} from '@angular/material/dialog';
@@ -22,8 +20,6 @@ export class AppComponent implements  OnInit  {
   displayedColumns: string[] = ['titre',  'datedebut', 'dateecheance','description','statut','Action'];
   dataSource ?: any;
 
-  @ViewChild(MatPaginator) paginator ?: MatPaginator;
-  @ViewChild(MatSort) sort ?: MatSort;
 
 
   constructor(public dialog: MatDialog, private servTask: ManagementTasksService) {
@@ -48,11 +44,6 @@ getAllTask(){
             
 
  
-ngAfterViewInit() {
-    this.dataSource= this.paginator;
-    this.dataSource.sort = this.sort;
-  }
-
 
 
   open(): void {
